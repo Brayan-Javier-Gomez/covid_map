@@ -1,0 +1,131 @@
+<!-- <div class="fondo">
+    <h1 class="text-center text-light">{{ title }}</h1>
+</div> -->
+
+
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <!-- <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button> -->
+    <div class="bg-light border-right fondo-side" id="sidebar-wrapper">
+
+
+        <div class="list-group list-group-flush">
+            <div class="sidebar-heading text-light fw-bold text-center">Busqueda
+            </div>
+            <div class="container d-grid gap-2">
+                <input type="text" class="form-control" placeholder="Ubicacion">
+
+                <button type="button" class="btn btn-outline-info">Buscar 
+                     <i class="fa fa-search"></i>
+                    </button>
+            </div>
+            <div class="sidebar-heading text-light fw-bold">Total de casos confirmados EEUU: <br>
+                <p class="text-success">
+                    3.200.480
+                </p>
+                Activos: <br>
+                <p class="text-warning">
+                    3.200.480
+                </p>
+                Recuperados: <br>
+                <p class="text-warning">
+                    3.200.480
+                </p>
+                Fallecidos: <br>
+                <p class="text-warning">
+                    3.200.480
+                </p>
+
+            </div>
+
+
+
+            <!-- <a class="list-group-item list-group-item-action bg-light" href="#">Noticias</a> -->
+
+        </div>
+    </div>
+    <!-- Page Content-->
+    <div id="page-content-wrapper">
+
+
+        <nav class="navbar navbar-expand-lg navbar-light  border-bottom fondo">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-2">
+
+                        <button class="btn btn-outline-warning" id="menu-toggle">Menu</button>
+
+                    </div>
+                    <div class="col-10">
+                        <h1 class="text-center text-light">{{ title }}</h1>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </nav>
+
+        <agm-map [streetViewControl]='false' [restriction]="countryRestriction" [zoomControl]='false' (mapClick)="guardar( $event )" [latitude]="lat" [longitude]="lng" [zoom]="4.5" [disableDoubleClickZoom]="true" [minZoom]="4.4" [maxZoom]="4.5">
+
+            <agm-marker [latitude]="coordenadas.coords.lat" [longitude]="coordenadas.coords.lng">
+
+                <agm-info-window [isOpen]=true>
+
+                    <div *ngIf="cargando">
+
+                        <h5 class="text-center">
+
+                            cargando...
+                            <br>
+                            <i class="fa fa-atom fa-spin">
+                                
+                            </i>
+
+                        </h5>
+
+                    </div>
+
+                    <div *ngIf="!cargando">
+
+                        <h5 class="text-success">
+
+                            {{data.location}}
+
+                        </h5>
+
+                        <hr>
+
+                        <p class="text-primary">
+
+                            Confirmados : {{data.confirmados}}
+
+                        </p>
+
+                        <p>
+
+                            recuperados : {{data.recuperados}}
+
+                        </p>
+
+                        <p class="text-danger">
+
+                            muertos : {{data.muertos}}
+
+                        </p>
+
+                    </div>
+
+
+                </agm-info-window>
+
+
+            </agm-marker>
+
+        </agm-map>
+    </div>
+
+</div>

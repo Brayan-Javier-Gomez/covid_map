@@ -13,27 +13,28 @@
             <div class="sidebar-heading text-light fw-bold text-center">Busqueda
             </div>
             <div class="container d-grid gap-2">
-                <input type="text" class="form-control" placeholder="Ubicacion">
 
-                <button type="button" class="btn btn-outline-info">Buscar 
+                <input type="text" class="form-control" placeholder="Ubicacion" #place>
+
+                <button type="button" class="btn btn-outline-info" (keyup.enter)='get_place(place.value)' (click)='get_place(place.value)'>Buscar 
                      <i class="fa fa-search"></i>
                     </button>
             </div>
             <div class="sidebar-heading text-light fw-bold">Total de casos confirmados EEUU: <br>
                 <p class="text-success">
-                    3.200.480
+                    {{data_us.total | number}}
                 </p>
                 Activos: <br>
                 <p class="text-warning">
-                    3.200.480
+                    {{data_us.confirmados | number}}
                 </p>
                 Recuperados: <br>
                 <p class="text-warning">
-                    3.200.480
+                    {{data_us.recuperados | number}}
                 </p>
                 Fallecidos: <br>
                 <p class="text-warning">
-                    3.200.480
+                    {{data_us.muertos | number}}
                 </p>
 
             </div>

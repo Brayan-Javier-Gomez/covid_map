@@ -8,12 +8,14 @@ import { AgmCoreModule } from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
 import {SidebarModule} from 'ng-sidebar';
 import * as $ from 'jquery';
+import { FoooterComponent } from './components/foooter/foooter.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    FoooterComponent
   ],
   imports: [
     BrowserModule,

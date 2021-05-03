@@ -60,7 +60,7 @@
 
                     </div>
                     <div class="col-10">
-                        <h1 class="text-center text-light">{{ title }}</h1>
+                        <h2 class="text-center text-light">{{ title }}</h2>
 
                     </div>
 
@@ -70,9 +70,9 @@
 
         </nav>
 
-        <agm-map [streetViewControl]='false' [restriction]="countryRestriction" [zoomControl]='false' (mapClick)="guardar( $event )" [latitude]="lat" [longitude]="lng" [zoom]="4.5" [disableDoubleClickZoom]="true" [minZoom]="4.4" [maxZoom]="4.5">
+        <agm-map [streetViewControl]='false' [restriction]="countryRestriction" [zoomControl]='false' (mapClick)="guardar( $event )" [latitude]="lat" [longitude]="lng" [zoom]="5" [disableDoubleClickZoom]="true" [minZoom]="5" [maxZoom]="5">
 
-            <agm-marker [latitude]="coordenadas.coords.lat" [longitude]="coordenadas.coords.lng">
+            <agm-marker [latitude]="coordenadas.coords.lat" [longitude]="coordenadas.coords.lng" [iconUrl]='icono.iconUrl'>
 
                 <agm-info-window [isOpen]=true>
 

@@ -14,14 +14,17 @@ import { HttpClient } from '@angular/common/http';
 
 export class MapComponent implements OnInit {
 
+  icono = {
+    iconUrl: 'assets/img/ico.png'
+  }
+
   data_us = {
-    confirmados: 'No confirmado',
+    confirmados: 0,
+    muertos: 0,
 
-    muertos: 'No confirmado',
+    recuperados: 0,
 
-    recuperados: 'No confirmado',
-
-    total: 'No confirmado'
+    total: 0
   };
 
   side = false;
@@ -60,7 +63,7 @@ export class MapComponent implements OnInit {
 
   nombre_estado;
 
-  title = 'COVID 19 Information';
+  title = 'COVID 19 Map';
 
   lat = 39.70091;
 
@@ -90,19 +93,30 @@ export class MapComponent implements OnInit {
 
 
     $('#menu-toggle').click(function (e) {
+
       e.preventDefault();
+
       $("#wrapper").toggleClass('toggled');
+
     });
 
 
 
     this.http.get('https://www.trackcorona.live/api/countries/us').subscribe((data: any) => {
-      console.log(data);
+
+
+
       this.data_us.confirmados = data.data[0].confirmed;
+
       this.data_us.recuperados = data.data[0].recovered;
+
       this.data_us.muertos = data.data[0].dead;
+
       this.data_us.total = (data.data[0].confirmed + data.data[0].recovered + data.data[0].dead)
-      console.log(this.data_us);
+
+
+
+
 
     });
   }
@@ -113,9 +127,7 @@ export class MapComponent implements OnInit {
 
     this.coordenadas = evento;
 
-    console.log(this.coordenadas.coords.lat);
 
-    console.log(this.coordenadas.coords.lng);
 
     this.http.get(
 
@@ -124,25 +136,28 @@ export class MapComponent implements OnInit {
     ).subscribe((data: any) => {
 
       if (data.features[0].text) {
+
         this.nombre_estado = encodeURI(data.features[0].text);
+
       }
 
-      console.log(this.nombre_estado);
+
 
       this.get_covid();
 
     });
 
-    console.log(this.data);
+
 
   }
 
   get_covid() {
+
     this.http.get(`${this.url_corona}/${this.nombre_estado}`).subscribe((datos: any) => {
 
       this.cargando = false;
 
-      console.log(datos);
+
 
       if (datos.data.length === 0) {
 
@@ -177,23 +192,26 @@ export class MapComponent implements OnInit {
   }
 
   get_place(lugar) {
-    
-    console.log(lugar);
 
     if (lugar === '') {
+
       return;
+
     }
+
     this.nombre_estado = encodeURI(lugar)
+
     this.http.get(
+
       `${this.url_mapbox}${this.nombre_estado}.json?country=us&types=region&access_token=${this.api_key}`).subscribe((data: any) => {
-      console.log(data.features[0].center[0]);
-      this.coordenadas.coords.lat = data.features[0].center[1];
-      this.coordenadas.coords.lng = data.features[0].center[0];
 
-      this.get_covid();
+        this.coordenadas.coords.lat = data.features[0].center[1];
 
+        this.coordenadas.coords.lng = data.features[0].center[0];
 
-    })
+        this.get_covid();
+
+      })
   }
 
 

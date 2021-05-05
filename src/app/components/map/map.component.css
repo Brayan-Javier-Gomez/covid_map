@@ -3,15 +3,15 @@ agm-map {
 }
 
 .fondo {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 9, 1) 0%, rgba(0, 0, 0, 1) 74%);
+    background: rgb(121, 121, 121);
+    background: linear-gradient(90deg, rgba(121, 121, 121, 1) 0%, rgba(217, 217, 217, 0.9304096638655462) 100%, rgba(36, 4, 4, 0) 100%);
     height: 65px;
     padding: 8px;
 }
 
 .fondo-side {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(0, 0, 0, 0.8855917366946778) 0%, rgba(121, 0, 0, 0.865983893557423) 74%);
+    background: rgb(121, 121, 121);
+    background: linear-gradient(90deg, rgba(121, 121, 121, 1) 0%, rgba(217, 217, 217, 0.9304096638655462) 100%, rgba(36, 4, 4, 0) 100%);
 }
 
 #wrapper {
@@ -44,6 +44,7 @@ agm-map {
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
+        height: 100%;
     }
     #page-content-wrapper {
         min-width: 0;

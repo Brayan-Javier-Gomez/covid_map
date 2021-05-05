@@ -5,11 +5,11 @@
 
 <div class="d-flex" id="wrapper">
 
-    <div class="bg-light border-right fondo-side" id="sidebar-wrapper">
+    <div class="bg-light bg-gradient border-right border border-info border-bottom-0" id="sidebar-wrapper">
 
         <div class="list-group list-group-flush">
 
-            <div class="sidebar-heading text-light fw-bold text-center">Busqueda
+            <div class="sidebar-heading text-dark fw-bold text-center">Busqueda
 
             </div>
 
@@ -19,7 +19,7 @@
 
                 <div class="btn-group-vertical" *ngFor="let estado of estados">
 
-                    <button type="button" class="btn btn-light" (click)='get_place(estado)'>{{estado}}</button>
+                    <button type="button" class="btn btn-outline-secondary" (click)='get_place(estado)'>{{estado}}</button>
 
                 </div>
 
@@ -31,9 +31,9 @@
 
             </div>
 
-            <div class="sidebar-heading text-light fw-bold">Total de casos confirmados EEUU: <br>
+            <div class="sidebar-heading text-dark fw-bold">Total de casos confirmados EEUU: <br>
 
-                <p class="text-success">
+                <p class="text-info">
 
                     {{data_us.total | number}}
 
@@ -41,7 +41,7 @@
 
                 Activos: <br>
 
-                <p class="text-warning">
+                <p class="text-danger">
 
                     {{data_us.confirmados | number}}
 
@@ -49,7 +49,7 @@
 
                 Recuperados: <br>
 
-                <p class="text-warning">
+                <p class="text-danger">
 
                     {{data_us.recuperados | number}}
 
@@ -57,7 +57,7 @@
 
                 Fallecidos: <br>
 
-                <p class="text-warning">
+                <p class="text-danger">
 
                     {{data_us.muertos | number}}
 
@@ -75,7 +75,7 @@
 
     <div id="page-content-wrapper">
 
-        <nav class="navbar navbar-expand-lg navbar-light  border-bottom fondo">
+        <nav class="navbar navbar-expand-lg navbar-light  border-bottom bg-light bg-gradient border border-info">
 
             <div class="container-fluid">
 
@@ -83,13 +83,13 @@
 
                     <div class="col-2">
 
-                        <button class="btn btn-outline-warning" id="menu-toggle">Menu</button>
+                        <button class="btn btn-success" id="menu-toggle">Menu</button>
 
                     </div>
 
                     <div class="col-10">
 
-                        <h2 class="text-center text-light">{{ title }}</h2>
+                        <h2 class="text-center text-">{{ title }}</h2>
 
                     </div>
 

@@ -81,8 +81,6 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(121, 9, 9, 1) 0%, rgba(0, 0, 0, 1) 74%);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

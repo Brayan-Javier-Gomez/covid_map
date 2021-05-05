@@ -104,6 +104,8 @@ export class MapComponent implements OnInit {
 
       $("#wrapper").toggleClass('toggled');
 
+
+
     });
 
 
@@ -247,15 +249,19 @@ export class MapComponent implements OnInit {
         listaEstados[i].name = listaEstados[i].name.toUpperCase();
 
         if (listaEstados[i].name.substring(0, key.length) === key) {
+         
 
           if (!this.estados.includes(listaEstados[i].name)) {
+
+         
+            this.estados = [];
 
             this.estados.unshift(
 
               listaEstados[i].name
 
             );
-          }
+          } 
 
 
         }

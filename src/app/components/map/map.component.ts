@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 
+import listaEstados from 'src/assets/json/estados.json';
+
 @Component({
 
   selector: 'app-map',
@@ -14,11 +16,14 @@ import { HttpClient } from '@angular/common/http';
 
 export class MapComponent implements OnInit {
 
+  estados = [];
+
   icono = {
     iconUrl: 'assets/img/ico.png'
   }
 
   data_us = {
+
     confirmados: 0,
     muertos: 0,
 
@@ -81,6 +86,7 @@ export class MapComponent implements OnInit {
 
   };
 
+
   url_mapbox = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 
   url_corona = 'https://www.trackcorona.live/api/provinces';
@@ -99,6 +105,7 @@ export class MapComponent implements OnInit {
       $("#wrapper").toggleClass('toggled');
 
     });
+
 
 
 
@@ -199,7 +206,10 @@ export class MapComponent implements OnInit {
 
     }
 
-    this.nombre_estado = encodeURI(lugar)
+    this.nombre_estado = encodeURI(lugar);
+
+    console.log(this.nombre_estado);
+
 
     this.http.get(
 
@@ -213,6 +223,49 @@ export class MapComponent implements OnInit {
 
       })
   }
+
+
+  get_char(key) {
+
+    key = key.toUpperCase();
+
+    console.log(key);
+
+    if (key === '') {
+
+      this.estados = [];
+
+      return;
+    }
+
+    const state = () => {
+
+      for (let i = 0; i < listaEstados.length; i++) {
+
+        // this.estados = [];
+
+        listaEstados[i].name = listaEstados[i].name.toUpperCase();
+
+        if (listaEstados[i].name.substring(0, key.length) === key) {
+
+          if (!this.estados.includes(listaEstados[i].name)) {
+
+            this.estados.unshift(
+
+              listaEstados[i].name
+
+            );
+          }
+
+
+        }
+
+
+      }
+    }
+    state();
+  }
+
 
 
 

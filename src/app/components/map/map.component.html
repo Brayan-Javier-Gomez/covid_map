@@ -4,52 +4,79 @@
 
 
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar-->
-    <!-- <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button> -->
+
     <div class="bg-light border-right fondo-side" id="sidebar-wrapper">
 
-
         <div class="list-group list-group-flush">
+
             <div class="sidebar-heading text-light fw-bold text-center">Busqueda
+
             </div>
+
             <div class="container d-grid gap-2">
 
-                <input type="text" class="form-control" placeholder="Ubicacion" #place>
+                <input type="text" class="form-control" placeholder="Ubicacion" #place (keyup)='get_char(place.value)'>
+
+                <div class="btn-group-vertical" *ngFor="let estado of estados">
+
+                    <button type="button" class="btn btn-light" (click)='get_place(estado)'>{{estado}}</button>
+
+                </div>
 
                 <button type="button" class="btn btn-outline-info" (keyup.enter)='get_place(place.value)' (click)='get_place(place.value)'>Buscar 
-                     <i class="fa fa-search"></i>
-                    </button>
+
+                    <i class="fa fa-search"></i>
+
+                </button>
+
             </div>
+
             <div class="sidebar-heading text-light fw-bold">Total de casos confirmados EEUU: <br>
+
                 <p class="text-success">
+
                     {{data_us.total | number}}
+
                 </p>
+
                 Activos: <br>
+
                 <p class="text-warning">
+
                     {{data_us.confirmados | number}}
+
                 </p>
+
                 Recuperados: <br>
+
                 <p class="text-warning">
+
                     {{data_us.recuperados | number}}
+
                 </p>
+
                 Fallecidos: <br>
+
                 <p class="text-warning">
+
                     {{data_us.muertos | number}}
+
                 </p>
 
             </div>
-
-
 
             <!-- <a class="list-group-item list-group-item-action bg-light" href="#">Noticias</a> -->
 
         </div>
+
     </div>
+
     <!-- Page Content-->
+
     <div id="page-content-wrapper">
 
-
         <nav class="navbar navbar-expand-lg navbar-light  border-bottom fondo">
+
             <div class="container-fluid">
 
                 <div class="row">
@@ -59,13 +86,16 @@
                         <button class="btn btn-outline-warning" id="menu-toggle">Menu</button>
 
                     </div>
+
                     <div class="col-10">
+
                         <h2 class="text-center text-light">{{ title }}</h2>
 
                     </div>
 
 
                 </div>
+
             </div>
 
         </nav>
@@ -117,6 +147,8 @@
                             muertos : {{data.muertos}}
 
                         </p>
+
+
 
                     </div>
 
